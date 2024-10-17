@@ -5,38 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced Code Editor</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- CodeMirror CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <style>
+        .CodeMirror {
+            height: auto;
+            border: 1px solid #ddd;
+            height: 300px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Advanced Code Editor</h1>
-        
-        <!-- Tabs for multiple file editing -->
         <div class="tabs">
-            <button onclick="switchTab('html')">HTML</button>
-            <button onclick="switchTab('css')">CSS</button>
-            <button onclick="switchTab('js')">JavaScript</button>
+            <button onclick="openTab(event, 'html')">HTML</button>
+            <button onclick="openTab(event, 'css')">CSS</button>
+            <button onclick="openTab(event, 'js')">JavaScript</button>
         </div>
-        
-        <!-- CodeMirror editor for each tab -->
-        <textarea id="html-editor" class="code-editor"></textarea>
-        <textarea id="css-editor" class="code-editor" style="display: none;"></textarea>
-        <textarea id="js-editor" class="code-editor" style="display: none;"></textarea>
-        
-        <button id="run" onclick="runCode()">Run Code</button>
-        
-        <!-- Output section -->
+        <div id="html" class="tabcontent">
+            <textarea id="htmlEditor"></textarea>
+        </div>
+        <div id="css" class="tabcontent" style="display:none">
+            <textarea id="cssEditor"></textarea>
+        </div>
+        <div id="js" class="tabcontent" style="display:none">
+            <textarea id="jsEditor"></textarea>
+        </div>
+        <button id="runBtn">Run Code</button>
         <iframe id="output" class="output"></iframe>
+        <button id="newFileBtn">New File</button>
+        <button id="saveFileBtn">Save File</button>
+        <div id="fileManager" style="display:none">
+            <h2>File Manager</h2>
+            <ul id="fileList"></ul>
+        </div>
     </div>
-
-    <!-- CodeMirror JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/xml/xml.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/css/css.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/htmlmixed/htmlmixed.min.js"></script>
-    
     <script src="script.js"></script>
 </body>
 </html>
